@@ -1,0 +1,95 @@
+
+import cv2
+import matplotlib.pyplot as plt
+img=cv2.imread('au.png')
+plt.ishow(img)
+
+#to remove axis
+plt.xticks([])
+plt.yticks([])
+plt.axis('off')
+
+
+#to know the resolution 
+a.b,c=img.shape[:3]
+print(a)
+print(b)
+print(c)
+
+
+#to convert image from bgr to rgb
+
+img=cv2.imread('au.png')
+img=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+
+plt.imshow(img)
+
+
+
+#contrasting the color image
+#using the CLAHE
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
+#Loading the source image
+img=cv2.imread('rose1.png')
+
+#converting the image from BGR to YCrCb
+ycrcb=cv2.cvtColor(img,cv2.COLOR_BGR2YCrCb)
+
+#split the elements of the ycrcb
+y,cr,cb,=cv2.split(ycrcb)
+
+#applying the contract using CLAHE
+clahe=cv2.createCLAHE(clipLimit=2,0,tileGridSize=(8,8,))
+y_clahe=clahe.apply(y)
+ycrcb_clahe=cv2.merge([y_clahe,cr,cb])
+
+#converting the color from YCrCb to BGR
+global _clahe=cv2.cvtColor(ycrcb_clahe,cv.COLOR_YCrCb2BGR)
+
+#converting the color from BGR to RGB
+global _clahe1=cv2.cvtColor(global_clahe,cv.COLOR_BGR2RGB)
+source=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+
+#Ploting the image
+plt.subplot(1,2,1),plt.imshow(source,cmap='gray'),plt.title('source'),plt.axis('off')
+plt.subplot(1,2,2),plt.imshow(global _clahe1,cmap='gray'),plt.title('Contrast image using CLAHE'),plt.axis('off')
+
+
+
+#contrasting the color image
+#using the CLAHE
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+
+#Loading the source image
+img=cv2.imread('rose1.png')
+
+#converting the image from BGR to YCrCb
+ycrcb=cv2.cvtColor(img,cv2.COLOR_BGR2YCrCb)
+
+#split the elements of the ycrcb
+y,cr,cb,=cv2.split(ycrcb)
+
+#Applying the contrast using globel histogram equalization.
+y_eq=cv2.equalizeHist(y)
+ycrcb_eq=cv2.merge([y_eq,cr,cb])
+
+
+#converting the color from YCrCb to BGR
+global _clahe=cv2.cvtColor(ycrcb_eq,cv.COLOR_YCrCb2BGR)
+
+#converting the color from BGR to RGB
+global _clahe1=cv2.cvtColor(global_eq,cv.COLOR_BGR2RGB)
+source=cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+
+#Ploting the image
+plt.subplot(1,2,1),plt.imshow(source,cmap='gray'),plt.title('source'),plt.axis('off')
+plt.subplot(1,2,2),plt.imshow(global _eq1,cmap='gray'),plt.title('Contrast image using CLAHE'),plt.axis('off')
+
+
